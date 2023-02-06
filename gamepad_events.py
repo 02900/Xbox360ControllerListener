@@ -142,13 +142,12 @@ def check_button_combination(buttons_pressed, combination):
 			return False
 	return True
 
-if __name__ == "__main__":
+def listen_gamepads():
 	xi = XInput()
 	from time import sleep
 
-	print("Reading all inputs from gamepad 0")
-	while True:
-		for x in range(XUSER_MAX_COUNT):
-			print(xi.GetButtonsPressed(x))
-		sleep(0.2)
-		
+	controls = []
+	for x in range(XUSER_MAX_COUNT):
+		controls.append(xi.GetButtonsPressed(x))
+
+	return controls
